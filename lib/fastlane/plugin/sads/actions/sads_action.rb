@@ -1,5 +1,5 @@
 require 'fastlane/action'
-require_relative '../helper/sdas_helper'
+require_relative '../helper/sads_helper'
 require 'faraday'
 require 'faraday/multipart'
 require 'json'
