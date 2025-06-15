@@ -7,12 +7,13 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.5
+       - image: circleci/ruby:3.2
 
     working_directory: ~/repo
 
     steps:
-      - checkout
+      - uses: actions/checkout@v4
+
 
       # Download and cache dependencies
       - restore_cache:
