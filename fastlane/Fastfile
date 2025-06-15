@@ -1,3 +1,6 @@
 lane :test do
-  sads
+  sads(
+    token: "1234567890",
+    url: "https://sads.significa.co" # do not set api path
+  )
 end
