@@ -8,15 +8,15 @@ module Fastlane
   module Actions
     class SadsAction < Action
       def self.run(params)
-        localpath = Actions.lane_context[Fastlane::Actions::SharedValues::IPA_OUTPUT_PATH]
+        localpath = Actions.lane_context[Fastlane::Actions::SharedValues::IPA_OUTPUT_PATH] || Actions.lane_context[Fastlane::Actions::SharedValues::GRADLE_APK_OUTPUT_PATH]
         if localpath.nil?
-          UI.user_error!("IPA 文件路径不存在")
+          UI.user_error!("IPA 或 APK 文件路径不存在")
         end
 
         token = params[:token]
         url = "#{params[:url]}/upload"
 
-        UI.message("正在上传 IPA 文件到 #{url} ...")
+        UI.message("正在上传文件到 #{url} ...")
 
         conn = Faraday.new(url: url) do |f|
           f.request :multipart
